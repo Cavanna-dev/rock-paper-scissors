@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>Rock Paper Scissors</title>
+</header>
+
+<body>
+<div>
+    <p>Welcome, choose your path</p>
+    <div><button onclick="sendData({element:'rock'})">ROCK</button></div>
+    <div><button onclick="sendData({element:'paper'})">PAPER</button></div>
+    <div><button onclick="sendData({element:'scissors'})">SCISSORS</button></div>
+</div>
+</body>
+
+<script>
+    function sendData(data) {
+        var XHR = new XMLHttpRequest();
+        var FD  = new FormData();
+
+        for(name in data) {
+            FD.append(name, data[name]);
+        }
+
+        XHR.addEventListener('load', function(event) {
+            console.log('data loaded');
+        });
+        XHR.addEventListener('error', function(event) {
+            console.log('error happened');
+        });
+
+        XHR.onreadystatechange = function() {
+            if (XHR.status == 404) {
+                window.location = "http://dev.rps:8080/error.html";
+            }
+        }
+
+        XHR.open('POST', 'http://dev.rps:8080/game.php');
+        XHR.send(FD);
+    }
+</script>
+</html>
