@@ -28,7 +28,6 @@
         XHR.addEventListener('error', function(event) {
             console.log('error happened');
         });
-
         XHR.onreadystatechange = function() {
             if (XHR.status == 404) {
                 window.location = "http://dev.rps:8080/error.html";

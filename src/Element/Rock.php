@@ -2,7 +2,7 @@
 
 namespace RPS;
 
-final class Rock implements Element
+class Rock implements Element
 {
     /** @var Element[] */
     private $weaknesses;

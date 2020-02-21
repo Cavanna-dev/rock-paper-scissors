@@ -2,8 +2,13 @@
 
 namespace RPS;
 
-require_once 'RequestValidator/RequestValidator.php';
-require_once 'Game/Game.php';
+require_once './Game/Game.php';
+require_once './RequestValidator/RequestValidator.php';
+require_once './Element/Element.php';
+require_once './Element/ElementFactory.php';
+require_once './Element/Rock.php';
+require_once './Element/Scissors.php';
+require_once './Element/Paper.php';
 
 $validator = new RequestValidator($_POST);
 
@@ -13,4 +18,5 @@ if (!$validator->isValidated()) {
     exit;
 }
 
-$game = new Game()
+$element = ElementFactory::create($validator->getElement())->build();
+$playerOne = new Player($element);

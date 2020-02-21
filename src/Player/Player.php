@@ -4,9 +4,11 @@ namespace RPS;
 
 class Player
 {
-    /** @var string */
-    private $name;
-
     /** @var Element */
-    private $sign;
+    private $element;
+
+    public function __construct(Element $element)
+    {
+        $this->element = $element;
+    }
 }

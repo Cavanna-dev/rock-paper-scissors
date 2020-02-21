@@ -2,7 +2,7 @@
 
 namespace RPS;
 
-final class Scissors implements Element
+class Scissors implements Element
 {
     /** @var Element[] */
     private $weaknesses;

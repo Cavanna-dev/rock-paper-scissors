@@ -2,7 +2,7 @@
 
 namespace RPS;
 
-final class Paper implements Element
+class Paper implements Element
 {
     /** @var Element[] */
     private $weaknesses;

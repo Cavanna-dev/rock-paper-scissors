@@ -4,11 +4,11 @@ namespace RPS;
 
 class Game
 {
-    private const ROCK = 'rock';
+    public const ROCK = 'rock';
 
-    private const PAPER = 'paper';
+    public const PAPER = 'paper';
 
-    private const SCISSORS = 'scissors';
+    public const SCISSORS = 'scissors';
 
     private const VALID_ELEMENTS = [
         self::ROCK,
@@ -21,7 +21,7 @@ class Game
 
     public static function isValidElement(string $element): bool
     {
-        if (!in_array($element, self::VALID_ELEMENTS)) {
+        if (!in_array($element, self::VALID_ELEMENTS, true)) {die('ko');
             return false;
         }
 

@@ -14,14 +14,21 @@ class RequestValidator
         $this->formData = $formData;
     }
 
-    public function isValidated(): bool
+    public function getElement(): string
     {
-        foreach ($this->formData as $key => $value) {
-            if ($key === 'element' && Game::isValidElement($value)) {
-                return true;
-            }
+        if (self::isValidated() === false) {
+            throw new \Exception('%s: data is not valid `%s`', __CLASS__, $this->formData);
         }
 
-        return false;
+        return $this->formData['element'];
+    }
+
+    public function isValidated(): bool
+    {
+        if (isset($this->formData['element']) && !Game::isValidElement($this->formData['element'])) {
+            return false;
+        }
+
+        return true;
     }
 }
