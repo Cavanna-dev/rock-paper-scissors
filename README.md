@@ -21,4 +21,6 @@ We check if data is correct but still.
 
 - Validator. It is okay but maybe I should have used a form to do the workflow. I never used xhttp this way, and it was a good occasion to improve myself
 
+- The result of the game. I'm so bad at this. I mean, everything was clear in my head, until I reach this point and don't know how to deal with this. So sorry about this part, it's the worse for me.
+
 Thanks for reading and taking time for me btw.
