@@ -6,13 +6,17 @@
 
 <body>
 <div>
-    <p>An error happened. Redirecting to homepage in 2s</p>
+    <p>An error happened. Redirecting to homepage in <span id="timing"></span>s</p>
 </div>
 </body>
 
 <script>
+    let timing = 2000;
+
     setTimeout(function(){
         window.location.href = 'http://dev.rps:8080/index.html';
-    }, 2000);
+    }, timing);
+
+    document.getElementById('timing').innerHTML = timing/1000;
 </script>
 </html>

@@ -11,4 +11,9 @@ class Player
     {
         $this->element = $element;
     }
+
+    public function getElement(): Element
+    {
+        return $this->element;
+    }
 }

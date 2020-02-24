@@ -10,8 +10,13 @@ class Scissors implements Element
     private function __construct()
     {
         $this->weaknesses = [
-            Rock::create(),
+            Game::ROCK,
         ];
+    }
+
+    public function getId(): string
+    {
+        return GAME::SCISSORS;
     }
 
     public static function create(): self
@@ -21,7 +26,7 @@ class Scissors implements Element
 
     public function isWeakTo(Element $element): bool
     {
-        if (in_array($element, $this->weaknesses)) {
+        if (in_array($element->getId(), $this->weaknesses)) {
             return true;
         }
 

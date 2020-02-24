@@ -3,6 +3,10 @@
 namespace RPS;
 
 require_once './Game/Game.php';
+require_once './Element/Element.php';
+require_once './Element/Paper.php';
+require_once './Element/Rock.php';
+require_once './Element/Scissors.php';
 
 class ElementFactory
 {
@@ -14,16 +18,16 @@ class ElementFactory
         $this->element = $element;
     }
 
-    public static function create(?string $element): self
+    public static function create(?string $element = null): self
     {
         if (null === $element) {
             $elements = [
-                Rock::create(),
-                Paper::create(),
-                Scissors::create(),
+                Game::PAPER,
+                Game::ROCK,
+                Game::SCISSORS,
             ];
 
-            $element = array_rand($elements, 1);
+            $element = $elements[array_rand($elements, 1)];
         }
 
         if (!Game::isValidElement($element)) {

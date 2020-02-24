@@ -11,6 +11,7 @@
     <div><button onclick="sendData({element:'paper'})">PAPER</button></div>
     <div><button onclick="sendData({element:'scissors'})">SCISSORS</button></div>
 </div>
+<div id="result"></div>
 </body>
 
 <script>
@@ -22,9 +23,6 @@
             FD.append(name, data[name]);
         }
 
-        XHR.addEventListener('load', function(event) {
-            console.log('data loaded');
-        });
         XHR.addEventListener('error', function(event) {
             console.log('error happened');
         });
@@ -32,9 +30,15 @@
             if (XHR.status == 404) {
                 window.location = "http://dev.rps:8080/error.html";
             }
+            if (XHR.readyState === XMLHttpRequest.DONE && XHR.status === 200) {
+                let response = JSON.parse(XHR.response);
+
+                document.getElementById('result').innerText = response.message;
+                console.log(response.log);
+            }
         }
 
-        XHR.open('POST', 'http://dev.rps:8080/game.php');
+        XHR.open('POST', 'http://dev.rps:8080/play.php', true);
         XHR.send(FD);
     }
 </script>

@@ -10,8 +10,13 @@ class Rock implements Element
     private function __construct()
     {
         $this->weaknesses = [
-            Paper::create(),
+            Game::PAPER,
         ];
+    }
+
+    public function getId(): string
+    {
+        return GAME::ROCK;
     }
 
     public static function create(): self
@@ -21,7 +26,7 @@ class Rock implements Element
 
     public function isWeakTo(Element $element): bool
     {
-        if (in_array($element, $this->weaknesses)) {
+        if (in_array($element->getId(), $this->weaknesses)) {
             return true;
         }
 
